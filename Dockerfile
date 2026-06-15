@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y \
     && apt-get install -y nodejs \
     && apt-get clean
 
+RUN docker-php-ext-install pdo_mysql zip gd
+
 # Install Chromium for Puppeteer
 RUN apt-get update && apt-get install -y \
     chromium \
