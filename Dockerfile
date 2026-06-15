@@ -39,9 +39,11 @@ WORKDIR /var/www
 
 COPY package.json package-lock.json /var/www/
 
-RUN npm ci --omit=dev && npm cache clean --force
+RUN npm ci
 
 COPY . /var/www
+
+RUN npm run build && npm prune --omit=dev && npm cache clean --force
 
 RUN composer install --no-dev --no-interaction --optimize-autoloader \
     && chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
