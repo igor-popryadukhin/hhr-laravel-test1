@@ -51,7 +51,8 @@ RUN composer install --no-dev --no-interaction --optimize-autoloader \
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN php artisan storage:link --no-interaction || true \
+RUN php artisan key:generate --force --no-interaction \
+    && php artisan storage:link --no-interaction || true \
     && php artisan config:cache \
     && php artisan route:cache \
     && php artisan view:cache
