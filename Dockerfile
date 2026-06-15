@@ -52,6 +52,6 @@ RUN php artisan storage:link --no-interaction || true \
     && php artisan route:cache \
     && php artisan view:cache
 
-EXPOSE 8000
+EXPOSE 8088
 
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
