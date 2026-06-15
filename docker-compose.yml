@@ -34,8 +34,6 @@ services:
       MYSQL_USER: "${DB_USERNAME:-laravel}"
       MYSQL_PASSWORD: "${DB_PASSWORD:-secret}"
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD:-rootsecret}"
-    ports:
-      - "${DB_PORT:-3306}:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
