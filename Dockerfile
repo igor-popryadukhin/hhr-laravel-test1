@@ -59,4 +59,4 @@ RUN php artisan key:generate --force --no-interaction \
 
 EXPOSE 8088
 
-CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
+CMD ["sh", "-c", "chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache && exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf"]
